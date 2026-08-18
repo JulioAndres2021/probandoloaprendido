@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
        $this->call([
-            CategoriaSeeder::class,
+            CategoriaSeeder::class, // Primero se crean las categorías obligatoriamente
+            ProductoSeeder::class,  // Luego se crean los productos apuntando a esas categorías
         ]);
     }
 }

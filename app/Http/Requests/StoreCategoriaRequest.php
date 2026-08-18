@@ -22,10 +22,9 @@ class StoreCategoriaRequest extends FormRequest
      */
     public function rules(): array
     {
-        // Captura el ID si estás editando, para evitar errores en la regla 'unique'
-        $categoriaId = $this->route('categoria') ? $this->route('categoria')->id : null;
+        
         return [
-            'nombre' => 'required|string|min:3|max:50|unique:categorias,nombre,' . $categoriaId,
+            'nombre' => 'required|string|min:3|max:50',
             'descripcion' => 'nullable|string|max:255',
         ];
 

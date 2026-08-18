@@ -22,14 +22,11 @@ class UpdateCategoriaRequest extends FormRequest
      */
     public function rules(): array
     {
-        // Captura el ID de la categoría desde la ruta de la URL
-        $categoriaId = $this->route('categoria');
 
         return [
             // 'sometimes' permite que el campo no sea obligatorio si no se envía en la petición (ideal para PATCH)
-            'nombre' => 'sometimes|required|string|min:3|max:50|unique:categorias,nombre,' . $categoriaId,
+            'nombre' => 'sometimes|required|string|min:3|max:50',
             'descripcion' => 'nullable|string|max:255',
-            'activo' => 'sometimes|boolean',
         ];
     }
 
@@ -43,7 +40,6 @@ class UpdateCategoriaRequest extends FormRequest
             'nombre.unique' => 'El nombre ya está en uso por otra categoría.',
             'descripcion.string' => 'La descripción debe ser un texto válido.',
             'descripcion.max' => 'La descripción no puede tener más de 255 caracteres.',
-            'activo.boolean' => 'El estado debe ser verdadero o falso.',
         ];
     }
 }

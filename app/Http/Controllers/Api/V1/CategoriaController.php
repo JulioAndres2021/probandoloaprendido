@@ -19,7 +19,8 @@ class CategoriaController extends Controller
         $categorias = Categoria::all();
         return response()->json([
             'data' => $categorias,
-            'mensaje' => 'Categorías recuperadas con éxito.'
+            'mensaje' => 'Categorías recuperadas con éxito.',
+            'code' => '200'
         ], 200);
     }
 
@@ -37,6 +38,7 @@ class CategoriaController extends Controller
             // 3. Retorna la respuesta JSON con código HTTP 201 (Created)
             return response()->json([
                 'status' => 'success',
+                'code' => '201',
                 'message' => 'Categoría creada correctamente.',
                 'data' => $categoria
             ], 201);
@@ -51,6 +53,7 @@ class CategoriaController extends Controller
         // Si no la encuentra, devuelve un error 404 automáticamente.
         return response()->json([
             'status' => 'success',
+            'code' => '200',
             'data' => $categoria
         ], 200);
     }
@@ -69,6 +72,7 @@ class CategoriaController extends Controller
             // 3. Retorna la respuesta JSON con el recurso actualizado y código 200 (OK)
             return response()->json([
                 'status' => 'success',
+                'code' => '200',
                 'message' => 'Categoría actualizada correctamente.',
                 'data' => $categoria
             ], 200);
@@ -85,6 +89,7 @@ class CategoriaController extends Controller
             // Retorna una respuesta de éxito con código HTTP 200 (OK)
             return response()->json([
                 'status' => 'success',
+                'code' => '200',
                 'message' => 'Categoría eliminada correctamente.'
             ], 200);
     }
